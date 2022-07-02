@@ -100,6 +100,7 @@ public class DoctorPatientController {
      */
     @RequestMapping("/update")
     public R update(@RequestBody DoctorPatientEntity doctorPatient){
+        //只更新病症字段和问诊费用字段
 		doctorPatientService.updateById(doctorPatient);
 
         return R.ok();

@@ -86,10 +86,22 @@ public class PatientController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody PatientEntity patient){
-		patientService.updateById(patient);
+    public R update(@RequestBody PatientDTO patientDTO){
+        LambdaQueryWrapper<DoctorEntity> queryWrapper = new LambdaQueryWrapper<>();
+        //添加过滤条件
+        queryWrapper.eq(patientDTO.getDorctorName() != null,DoctorEntity::getName,patientDTO.getDorctorName() );
 
-        return R.ok();
+        DoctorEntity one = doctorService.getOne(queryWrapper);
+        if(one != null){
+
+            PatientEntity patient = new PatientEntity();
+
+            patientService.updateById(patient);
+
+            return R.ok();
+        }else {
+            return R.error("医生信息有误，请确认");
+        }
     }
 
     /**

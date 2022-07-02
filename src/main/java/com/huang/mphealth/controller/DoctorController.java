@@ -52,16 +52,16 @@ public class DoctorController {
         Page<DoctorEntity> pageInfo = new Page<>(page,pageSize);
         Page<DoctorDto> doctorDtoPage = new Page<>();
 
-//        //条件构造器
-//        LambdaQueryWrapper<PatientConditionEntity> queryWrapper = new LambdaQueryWrapper<>();
-//        //添加过滤条件
-//        queryWrapper.like(name != null,PatientConditionEntity::getName,name);
-//        //添加排序条件
-//        queryWrapper.orderByDesc(PatientConditionEntity::getUpdateTime);
+        //条件构造器
+        LambdaQueryWrapper<DoctorEntity> queryWrapper = new LambdaQueryWrapper<>();
+        //添加过滤条件
+        queryWrapper.like(name != null,DoctorEntity::getName,name);
+        //添加排序条件
+        queryWrapper.orderByDesc(DoctorEntity::getUpdateTime);
 
 
         //执行分页查询
-        doctorService.page(pageInfo);
+        doctorService.page(pageInfo,queryWrapper);
 
         //对象拷贝
         BeanUtils.copyProperties(pageInfo,doctorDtoPage);
@@ -72,8 +72,8 @@ public class DoctorController {
             DoctorDto doctorDto = new DoctorDto();
 
             BeanUtils.copyProperties(item,doctorDto);
-
-            String departmentId = item.getDepartmentId();//分类id
+            //分类id
+            String departmentId = item.getDepartmentId();
             //根据id查询分类对象
             DepartmentEntity department = departmentService.getById(departmentId);
 
@@ -119,7 +119,6 @@ public class DoctorController {
 //        //上链操作
 //        patientEntity.setPatientHash(CryptoUtil.sHA256(""+ patientDTO.getId()));
 //        patientService.save(patientEntity);
-
         doctorService.save(doctorEntity);
 
         return R.ok();
@@ -129,10 +128,21 @@ public class DoctorController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody DoctorEntity doctor){
-		doctorService.updateById(doctor);
+    public R update(@RequestBody DoctorDto doctorDto){
+        LambdaQueryWrapper<DepartmentEntity> queryWrapper = new LambdaQueryWrapper<>();
+        //添加过滤条件
+        queryWrapper.eq(doctorDto.getDepartmentName() != null,DepartmentEntity::getDepartment,doctorDto.getDepartmentName());
 
-        return R.ok();
+        DepartmentEntity one = departmentService.getOne(queryWrapper);
+        if( one != null){
+
+            DoctorEntity doctorEntity = new DoctorEntity();
+            BeanUtils.copyProperties(doctorDto,doctorEntity);
+            doctorService.updateById(doctorEntity);
+            return R.ok();
+        }else {
+            return R.error("部门信息有误，添加信息失败");
+        }
     }
 
     /**

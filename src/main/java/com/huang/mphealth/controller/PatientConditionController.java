@@ -10,6 +10,7 @@ import com.huang.mphealth.model.PatientConditionDTO;
 import com.huang.mphealth.service.DoctorService;
 import com.huang.mphealth.service.PatientConditionService;
 import com.huang.mphealth.service.PatientService;
+import com.huang.mphealth.utlis.CryptoUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -130,6 +131,7 @@ public class PatientConditionController {
      */
     @RequestMapping("/update")
     public R update(@RequestBody PatientConditionEntity patientCondition){
+        patientCondition.setHash(CryptoUtil.sHA256(patientCondition.getId() + ""));
 		patientConditionService.updateById(patientCondition);
 
         return R.ok();
