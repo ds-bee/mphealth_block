@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.huang.common.utils;
+package com.huang.mphealth.utils;
 
 import org.apache.http.HttpStatus;
 

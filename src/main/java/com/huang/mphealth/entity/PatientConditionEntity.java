@@ -35,6 +35,10 @@ public class PatientConditionEntity implements Serializable {
 	 */
 	private String condition;
 	/**
+	 * 医生姓名
+	 */
+	private String doctorName;
+	/**
 	 * 价格
 	 */
 	private String value;

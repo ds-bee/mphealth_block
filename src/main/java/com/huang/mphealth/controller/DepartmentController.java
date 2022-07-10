@@ -2,10 +2,10 @@ package com.huang.mphealth.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.huang.common.utils.PageUtils;
-import com.huang.common.utils.R;
+import com.huang.mphealth.common.PageUtils;
 import com.huang.mphealth.entity.DepartmentEntity;
 import com.huang.mphealth.service.DepartmentService;
+import com.huang.mphealth.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

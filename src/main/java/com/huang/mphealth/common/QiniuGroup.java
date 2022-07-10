@@ -6,16 +6,12 @@
  * 版权所有，侵权必究！
  */
 
-package com.huang.common.utils;
+package com.huang.mphealth.common;
 
 /**
- * Redis所有Keys
+ * 七牛
  *
  * @author Mark sunlightcs@gmail.com
  */
-public class RedisKeys {
-
-    public static String getSysConfigKey(String key){
-        return "sys:config:" + key;
-    }
+public interface QiniuGroup {
 }

@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.huang.common.utils;
+package com.huang.mphealth.common;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 

@@ -6,11 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.huang.common.utils;
-
-import io.renren.common.validator.group.AliyunGroup;
-import io.renren.common.validator.group.QcloudGroup;
-import io.renren.common.validator.group.QiniuGroup;
+package com.huang.mphealth.common;
 
 import java.util.Optional;
 import java.util.stream.Stream;

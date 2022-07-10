@@ -1,13 +1,13 @@
 package com.huang.mphealth.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.huang.common.utils.PageUtils;
-import com.huang.common.utils.R;
+import com.huang.mphealth.common.PageUtils;
 import com.huang.mphealth.entity.DoctorEntity;
 import com.huang.mphealth.entity.PatientEntity;
 import com.huang.mphealth.model.PatientDTO;
 import com.huang.mphealth.service.DoctorService;
 import com.huang.mphealth.service.PatientService;
+import com.huang.mphealth.utils.R;
 import com.huang.mphealth.utlis.CryptoUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

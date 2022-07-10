@@ -1,7 +1,7 @@
 package com.huang.mphealth.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.huang.common.utils.PageUtils;
+import com.huang.mphealth.common.PageUtils;
 import com.huang.mphealth.entity.EmployeeEntity;
 
 import java.util.Map;
